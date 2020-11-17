@@ -63,5 +63,5 @@
   tags: movabletype
 
 - name: logrotate
-  template: src=logrotate.d.mt.j2 dest=/etc/logrotate.d/movabletype owner=root group=root mode=0664 force=no
+  template: src=logrotate.d.mt.j2 dest=/etc/logrotate.d/movabletype owner=root group=root mode=0644 force=no
   tags: movabletype
