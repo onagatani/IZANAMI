@@ -13,7 +13,9 @@
     RewriteEngine on
     RewriteCond %{REQUEST_METHOD} ^TRACK
     RewriteRule .* - [R=405,L]
+    {% if item.letsencrypt -%}
     RewriteCond %{REQUEST_URI} !^/\.well-known/
+    {% endif %}
     RewriteRule /\..+$ - [R=404,L]
 
     {% if movabletype and not mt.psgi %}
@@ -83,7 +85,9 @@
     RewriteEngine on
     RewriteCond %{REQUEST_METHOD} ^TRACK
     RewriteRule .* - [R=405,L]
+    {% if item.letsencrypt -%}
     RewriteCond %{REQUEST_URI} !^/\.well-known/
+    {% endif %}
     RewriteRule /\..+$ - [R=404,L]
 
     {% if movabletype and not mt.psgi %}
