@@ -12,6 +12,9 @@ server {
     access_log  /var/www/vhosts/{{ item.name }}/logs/access.log  main;
     error_log   /var/www/vhosts/{{ item.name }}/logs/error.log warn;
 
+    location ~ /\.(?!well-known).* { access_log off; log_not_found off; return 404; }
+    location ~* .*\.(cache|sql|dump|log|bak)$ { access_log off; log_not_found off; return 404; }
+
     {% if item.ssl.only -%}
     if ( $scheme = "http" ) {
         return 301 https://$host$request_uri;

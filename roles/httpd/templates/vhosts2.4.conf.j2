@@ -15,8 +15,8 @@
     RewriteRule .* - [R=405,L]
     {% if item.letsencrypt -%}
     RewriteCond %{REQUEST_URI} !^/\.well-known/
-    {% endif %}
-    RewriteRule /\..+$ - [R=404,L]
+    {% endif -%}
+    RewriteRule /\..*$ - [R=404,L]
 
     {% if movabletype and not mt.psgi %}
     ScriptAlias  /mt /var/www/movabletype
@@ -87,8 +87,8 @@
     RewriteRule .* - [R=405,L]
     {% if item.letsencrypt -%}
     RewriteCond %{REQUEST_URI} !^/\.well-known/
-    {% endif %}
-    RewriteRule /\..+$ - [R=404,L]
+    {% endif -%}
+    RewriteRule /\..*$ - [R=404,L]
 
     {% if movabletype and not mt.psgi %}
     ScriptAlias  /mt /var/www/movabletype
