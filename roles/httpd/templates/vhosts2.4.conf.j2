@@ -13,6 +13,7 @@
     RewriteEngine on
     RewriteCond %{REQUEST_METHOD} ^TRACK
     RewriteRule .* - [R=405,L]
+    RewriteRule /\..+$ - [R=404,L]
 
     {% if movabletype and not mt.psgi %}
     ScriptAlias  /mt /var/www/movabletype
