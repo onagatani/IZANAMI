@@ -87,6 +87,34 @@
   yum: name="{{ packages }}" state=present
   tags: common
 
+- name: install the latest libraries
+  yum: name="giflib-devel" state=present
+  tags: common
+  when: amzn2 
+
+- name: giflib-devel installed
+  yum: name="giflib-devel" state=present
+  tags: common
+  when: centos7 or amzn2 
+
+- name: giflib-devel installed
+  yum:
+    name:
+      - giflib-devel
+    state: present 
+    enablerepo: rhel-7-server-rhui-optional-rpms
+  when: rhel7
+  tags: common
+
+- name: giflib-devel installed
+  yum:
+    name:
+      - giflib-devel
+    state: present
+    enablerepo: remi,epel,codeready-builder-for-rhel-8-rhui-rpms
+  when: rhel8
+  tags: common
+
 - name: yum update
   yum: state=latest name=*
   tags: common
